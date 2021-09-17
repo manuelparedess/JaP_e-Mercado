@@ -47,7 +47,7 @@ function mostrarUsuario() {
 
     let usuario = JSON.parse(usuario_json)
 
-    document.getElementById("usuario").innerHTML += `<img src="img/usuario.png" id="img-user"><span id="user">`+ usuario +`</span>`
+    document.getElementById("usuario").innerHTML += `<img src="img/usuario.png" class="img-user"><span id="user">`+ usuario +`</span>`
 
   } 
 }

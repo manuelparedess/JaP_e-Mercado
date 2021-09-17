@@ -18,10 +18,10 @@ function cargarProductos(array) {
       listado += `
         <div class="product">
           <div class="products-image">
-            <img id="product-image" src="`+ producto.imgSrc + `">
+            <img id="product-image" src="`+ producto.imgSrc + `" onclick="redireccion()">
           </div>
           <div class="products-name"> 
-            <h3 id="product-name">`+ producto.name + `</h3>
+            <h3 id="product-name" onclick="redireccion()">`+ producto.name + `</h3>
           </div>
           <div class="products-description">
             <p id="product-description" style="font-style: oblique;">`+ producto.description + `</p>
@@ -38,6 +38,10 @@ function cargarProductos(array) {
     }
     document.getElementById("products-list").innerHTML = listado
   }
+}
+
+function redireccion () {
+  window.location = "product-info.html"
 }
 
 function ordenarProductos(criterio, array) {
