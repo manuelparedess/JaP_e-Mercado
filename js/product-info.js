@@ -1,6 +1,8 @@
 let productsInfo
 let comments
 let info = ""
+let indexRelatedProducts = []
+let allProducts = []
 
 //Esta funcion muestra la informacion del producto
 function showInfo(array) {
@@ -50,7 +52,12 @@ function showInfo(array) {
                 </div>
             </div>
         </div>
-    <p id="comms">Comentarios:</p>`
+        <div class="commentsSite">
+            <p id="comms">Comentarios:</p>
+    `
+
+    indexRelatedProducts = array.relatedProducts
+
     document.getElementById("info-product").innerHTML = info
 }
 
@@ -59,7 +66,7 @@ function showComments(array) {
 
     for (let i = 0; i < array.length; i++) {
         const comment = array[i];
-        //Con estos for agrego las estrellas, si la calificacion es menos de 5 va a agregar estrellas que no estan pintadas y eso lo guarda en la variable calificacion
+        //Con estos for agrego las estrellas, si el score es menos de 5 va a agregar estrellas que no estan pintadas y eso lo guarda en la variable calificacion
         let calification = ""
         for (let i = 1; i <= comment.score; i++) {
             calification += `<span class="fa fa-star checked"></span>`
@@ -74,33 +81,70 @@ function showComments(array) {
             <p id="cdescription">`+ comment.description + `</p>
             <p id="cdate">`+ comment.dateTime + `</p>
         </div>
-        
         `
+        
     }
 
     //Controles para comentar y calificar
     info += `
-        <div class="user-comments">
-            <p id="add-comm">Agregar comentario:</p>
-            <textarea name="comment" id="user_comment" cols="30" rows="10"></textarea>
-            <div id="calification">
-                <input id="radio1" type="radio" name="estrellas" value="5" onclick="document.getElementById('value').innerHTML='5'">
-                <label for="radio1">&#10025;</label>
-                <input id="radio2" type="radio" name="estrellas" value="4" onclick="document.getElementById('value').innerHTML='4'">
-                <label for="radio2">&#10025;</label>
-                <input id="radio3" type="radio" name="estrellas" value="3" onclick="document.getElementById('value').innerHTML='3'">
-                <label for="radio3">&#10025;</label>
-                <input id="radio4" type="radio" name="estrellas" value="2" onclick="document.getElementById('value').innerHTML='2'">
-                <label for="radio4">&#10025;</label>
-                <input id="radio5" type="radio" name="estrellas" value="1" onclick="document.getElementById('value').innerHTML='1'" checked>
-                <label for="radio5">&#10025;</label>
-            </div><br>
-            <button id="comment-submit" type="button" class="btn btn-primary" onclick="sendComment()">Enviar</button>
-            <p id="value">1</p>
+            <div class="user-comments">
+                <p id="add-comm">Agregar comentario:</p>
+                <textarea name="comment" id="user_comment" cols="30" rows="10"></textarea>
+                <div id="calification">
+                    <input id="radio1" type="radio" name="estrellas" value="5" onclick="document.getElementById('value').innerHTML='5'">
+                    <label for="radio1">&#10025;</label>
+                    <input id="radio2" type="radio" name="estrellas" value="4" onclick="document.getElementById('value').innerHTML='4'">
+                    <label for="radio2">&#10025;</label>
+                    <input id="radio3" type="radio" name="estrellas" value="3" onclick="document.getElementById('value').innerHTML='3'">
+                    <label for="radio3">&#10025;</label>
+                    <input id="radio4" type="radio" name="estrellas" value="2" onclick="document.getElementById('value').innerHTML='2'">
+                    <label for="radio4">&#10025;</label>
+                    <input id="radio5" type="radio" name="estrellas" value="1" onclick="document.getElementById('value').innerHTML='1'" checked>
+                    <label for="radio5">&#10025;</label>
+                </div><br>
+                <button id="comment-submit" type="button" class="btn btn-primary" onclick="sendComment()">Enviar</button>
+                <p id="value">1</p>
+            </div>
         </div>
         ` 
     
     document.getElementById("info-product").innerHTML = info
+}
+
+//Funcion que muestra los productos relacionados
+function showRelatedProducts(array) {
+
+    let relatedProducts = `
+        <p id="relprod">Productos relacionados:</p>
+        <div class="row mx-2">
+    `
+    //Con este for recorro el array con los indices de los productos relacionados
+    //y los voy pasando como indices del array con todos los productos
+    for (let i = 0; i < indexRelatedProducts.length; i++) {
+        const index = indexRelatedProducts[i];
+
+        relatedProducts += `
+            <div class="card shadow border-secondary" style="width: 18rem;" onclick="redirect()">
+                <img src="`+ array[index].imgSrc +`" class="card-img-top">
+                <div class="card-body">
+                    <h4 class="card-title"><b>`+ array[index].name +`</b></h4>
+                    <p class="card-text">`+ array[index].description +`</p>
+                </div>
+                <div class="card-footer border-secondary">
+                    Precio: <b class="text-success">$`+ array[index].cost +` `+ array[index].currency +`</b><span class="float-right text-secondary">&#10095;</span>
+                </div>
+            </div>`
+          
+    }
+
+    relatedProducts += `</div>`
+
+    document.getElementById("relatedProd").innerHTML = relatedProducts
+}
+
+//Funcion para redireccionar los productos relacionados a su informacion de producto
+function redirect () {
+    window.location = "product-info.html"
 }
 
 //Esta funcion es para enviar comentarios
@@ -141,6 +185,7 @@ function sendComment() {
 
     showInfo(productsInfo)
     showComments(comments)
+    showRelatedProducts(allProducts)
       
 }
 
@@ -163,6 +208,15 @@ document.addEventListener("DOMContentLoaded", function (e) {
             showComments(comments);
         } else {
             alert(respuesta.data)
+        }
+    });
+
+    getJSONData(PRODUCTS_URL).then(function (respuesta) {
+        if (respuesta.status === "ok") {
+          allProducts = respuesta.data;
+          showRelatedProducts(allProducts);
+        } else {
+          alert(respuesta.data)
         }
     });
 })

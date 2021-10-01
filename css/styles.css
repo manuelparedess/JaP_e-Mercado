@@ -211,25 +211,31 @@ a.custom-card:hover {
 }
 
 #usuario {
-  color: white;
-  position: absolute;
-  font-weight: bold;
+  background-color: #343a40;
   font-style: italic;
-  font-size: 14px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin-left: 66%;
-  border: white solid 2px;
-  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1rem;
+  border: #343a40 solid 1px;
+  border-radius: 10px;
+}
+#usuario:hover {
+  background-color: #49515a;
+  text-decoration: underline #0087F7;
 }
 #user {
   color: #0087F7;
+  margin-left: 2px;
+  margin-right: 10px;
+}
+.dropdown-item:hover{
+  background-color: lightgray;
 }
 .img-user {
   width: 20px;
   height: 20px;
   margin-right: 3px;
   margin-left: 1px;
+  margin-bottom: 3px;
 }
 
 #filtrar {
@@ -392,11 +398,10 @@ a.custom-card:hover {
   margin-top: 2%;
   border: black solid 5px;
 }
-#imgs, #comms, #add-comm {
+#imgs, #comms, #add-comm, #relprod {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 30px;
 } 
-
 #comms, #add-comm, #comment-submit{
   margin-left: 5%;
   margin-top: 5%;
@@ -476,3 +481,11 @@ a.custom-card:hover {
 #value {
   display: none;
 }
+#relatedProd{
+  margin-left: 15%;
+}
+#relprod, .card {
+  margin-left: 5%;
+  margin-top: 25px;
+}
+.card:hover {cursor: pointer;}
