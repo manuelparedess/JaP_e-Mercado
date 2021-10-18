@@ -40,7 +40,7 @@
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <div class="dropdown" id="dropdown-user">
+      <div class="dropdown d-none d-md-inline-block" id="dropdown-user">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="usuario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         </button>
         <div class="dropdown-menu" aria-labelledby="usuario">
@@ -51,14 +51,31 @@
       </div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 17/10/2021) y Entrega 7 (Fecha de entrega: 14/11/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  
+  <div class="main">
+    <div class="text-center p-4">
+      <h2>Carrito de compras</h2>
+      <p class="lead">Aquí verás los productos que deseas comprar.</p> <hr>
+    </div>
+    <div class="container-fluid">
+      <div class="row justify-content-between mx-5">
+        <div class="col-md-8" id="cart">
+        </div>
+        <div class="col-md-3 col-8 mx-auto mx-md-0 my-5 my-md-0 shadow" id="controls" style="color: white; background-color: #343a40;">
+        </div>
+      </div>
     </div>
   </div>
+
+  <footer class="text-muted bg-light">
+    <div class="container">
+      <p class="float-right">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
+      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+    </div>
+  </footer>
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>

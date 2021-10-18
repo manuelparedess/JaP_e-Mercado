@@ -489,3 +489,18 @@ a.custom-card:hover {
   margin-top: 25px;
 }
 .card:hover {cursor: pointer;}
+
+.addedProduct {
+  height: 15em;
+}
+#controls {
+  border: black solid 3px;
+  border-radius: 20px;
+}
+#currency {
+  font-size: 30px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin-bottom: 15px;
+  margin-left: 5px;
+}
+
