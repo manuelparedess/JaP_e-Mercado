@@ -13,45 +13,117 @@
   <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <style>
-    html,
-    body {
-      height: 100%;
-    }
-
-    body {
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-align: center;
-      align-items: center;
-      padding-top: 40px;
-      padding-bottom: 40px;
-      background-color: #a5d5f5;
-    }
-
-    .signin {
-      width: 100%;
-      max-width: 330px;
-      padding: 15px;
-      margin: auto;
-    }
-  </style>
 </head>
 
-<body class="text-center">
-  <div id="login">
-    <img id="login-image" src="img/login.png">
-    <h1 style="font-family: Arial, Helvetica, sans-serif;">Iniciar Sesión:</h1>
-    <input type="email" id="login-email" placeholder="Email o Usuario"><br>
-    <input type="password" id="login-password" placeholder="Contraseña"><br>
-    <label for="inputCheckbox" class="login-checkbox">Recordarme</label>
-    <input type="checkbox"><br>
-    <button id="login-submit">Ingresar</button>
-    <h6 id="alerta"></h6>
-  </div>
-
+<body>
+  <nav class="site-header sticky-top py-1 bg-dark">
+    <div class="container d-flex flex-column flex-md-row justify-content-between">
+      <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
+      <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
+      <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
+      <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="usuario" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+        </button>
+        <div class="dropdown-menu" aria-labelledby="usuario">
+          <a class="dropdown-item" href="cart.html">Ver mi carrito</a>
+          <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
+          <a class="dropdown-item" href="login.html">Cerrar sesion</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <main role="main">
+    <section class="jumbotron text-center">
+      <div class="m-5">
+        <h1></h1>
+      </div>
+    </section>
+    <div class="album py-5 bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <a href="categories.html" class="card mb-4 shadow-sm custom-card">
+              <img class="bd-placeholder-img card-img-top" src="img/cat1.jpg">
+              <h3 class="m-3">Autos (122)</h3>
+              <div class="card-body">
+                <p class="card-text">Los mejores precios en autos 0 kilómetro, de alta y media gama.</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <a href="categories.html" class="card mb-4 shadow-sm custom-card">
+              <img class="bd-placeholder-img card-img-top" src="img/cat2.jpg">
+              <h3 class="m-3">Juguetes (354)</h3>
+              <div class="card-body">
+                <p class="card-text">Encuentra aquí los mejores precios para niños/as de cualquier edad.</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <a href="categories.html" class="card mb-4 shadow-sm custom-card">
+              <img class="bd-placeholder-img card-img-top" src="img/cat3.jpg">
+              <h3 class="m-3">Muebles (157)</h3>
+              <div class="card-body">
+                <p class="card-text">Muebles antiguos, nuevos y para ser armados por uno mismo.</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <a href="categories.html" class="card mb-4 shadow-sm custom-card">
+              <img class="bd-placeholder-img card-img-top" src="img/cat4.jpg">
+              <h3 class="m-3">Herramientas (452)</h3>
+              <div class="card-body">
+                <p class="card-text">Herramientas para cualquier tipo de trabajo.</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <a href="categories.html" class="card mb-4 shadow-sm custom-card">
+              <img class="bd-placeholder-img card-img-top" src="img/cat5.jpg">
+              <h3 class="m-3">Computadoras (724)</h3>
+              <div class="card-body">
+                <p class="card-text">Todo en cuanto a computadoras, para uso de oficina y/o juegos.</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <a href="categories.html" class="card mb-4 shadow-sm custom-card">
+              <img class="bd-placeholder-img card-img-top" src="img/cat6.jpg">
+              <h3 class="m-3">Vestimenta (841)</h3>
+              <div class="card-body">
+                <p class="card-text">Gran variedad de ropa, nueva y de segunda mano.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="row">
+          <a type="button" class="btn btn-light btn-lg btn-block" href="categories.html">Ver todas</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-right">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
+      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+    </div>
+  </footer>
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
-  <script src="js/login.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function (e) {
+      if (sessionStorage.getItem("usuario")){
+      } else {
+        window.location.replace("login.html")
+      }
+    });
+  </script>
 </body>
 
 </html>

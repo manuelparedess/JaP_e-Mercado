@@ -155,7 +155,7 @@ function sendComment() {
 
     let fechaYHora = new Date()
 
-    let usuario_json = localStorage.getItem("usuario")
+    let usuario_json = sessionStorage.getItem("usuario")
     
     let usuario = JSON.parse(usuario_json)    
 

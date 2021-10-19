@@ -43,8 +43,8 @@ var getJSONData = function (url) {
 
 function mostrarUsuario() {
 
-  if (localStorage.getItem("usuario")) {
-    let usuario_json = localStorage.getItem("usuario")
+  if (sessionStorage.getItem("usuario")) {
+    let usuario_json = sessionStorage.getItem("usuario")
 
     let usuario = JSON.parse(usuario_json)
 
