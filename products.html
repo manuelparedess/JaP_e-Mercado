@@ -22,8 +22,9 @@
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <div class="dropdown" id="dropdown-user">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="usuario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <div class="dropdown d-none d-md-inline-block" id="dropdown-user">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="usuario" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
         </button>
         <div class="dropdown-menu" aria-labelledby="usuario">
           <a class="dropdown-item" href="cart.html">Ver mi carrito</a>
@@ -33,45 +34,43 @@
       </div>
     </div>
   </nav>
-  <br>
-  <div class="list-products">
-    <h2 style="text-align: center;">Productos</h2>
-    <p class="lead" style="text-align: center;">Aqui se encuentran los productos en venta.</p>
-    <br>
-    <div class="products-filters">
-      <div class="search-products">
-        <div>
-          <input type="search" id="buscar" placeholder="&#128270 Buscar...">
-          
+  <div class="main">
+    <div class="text-center p-4">
+      <h2>Productos</h2>
+      <p class="lead">Aqui se encuentran los productos en venta.</p>
+    </div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <input type="search" class="form-control form-control-sm w-50 border border-primary rounded" id="buscar"
+          placeholder="&#128270 Buscar...">
+      </div>
+      <div class="row justify-content-around mt-5">
+        <div class="col-6 col-md-4 p-0">
+          <p class="d-inline font-weight-bold">Ordenar por:</p>
+          <div class="dropdown d-inline">
+            <button class="btn btn-sm dropdown-toggle text-primary" type="button" id="order" data-toggle="dropdown"
+              aria-expanded="false">
+              Seleccionar
+            </button>
+            <div class="dropdown-menu" aria-labelledby="order">
+              <button class="dropdown-item" id="cost-asc" onclick="ordenarProductos(2, productos)">Mayor precio</button>
+              <button class="dropdown-item" id="cost-desc" onclick="ordenarProductos(1, productos)">Menor
+                precio</button>
+              <button class="dropdown-item" id="relevance" onclick="ordenarProductos(3, productos)">Relevancia</button>
+            </div>
+          </div>
         </div>
-      </div><br>
-      <div class="order-products">
-        <div  class="label-selectOrder">
-          <p>Ordenar por:</p>
-        </div>
-        <div id="select-order">
-          <button id="order"><span class="arrow">&#11167</span>Seleccionar</button><br>
-          <div id="order-options">
-            <button id="cost-desc">Menor precio</button><br>
-            <button id="cost-asc">Mayor precio</button><br>
-            <button id="relevance">Relevancia</button><br>
+        <div class="col-6 col-md-4 p-0">
+          <div class="row d-flex justify-content-center">
+            <input type="number" class="form-control form-control-sm w-25 mr-2" placeholder="min." id="costMin">
+            <input type="number" class="form-control form-control-sm w-25 mr-2" placeholder="máx." id="costMax">
+            <button id="filtrar" class="btn btn-sm btn-primary mr-2">Filtrar</button>
+            <button id="clear" class="btn btn-sm btn-danger">Borrar</button>
           </div>
         </div>
       </div>
-      <div class="cost-range">
-        <div class="label-costFilter">
-          <p>Precio:</p>
-        </div>
-        <div id="cost-filter">
-          <input type="number" placeholder="min." id="costMin">
-          <input type="number" placeholder="máx." id="costMax">
-          <button id="filtrar">Filtrar</button>
-          <button id="clear">Borrar</button>
-        </div>
+      <div class="row mt-3" id="products-list">
       </div>
-    </div>
-    <br>
-    <div id="products-list">
     </div>
   </div>
 

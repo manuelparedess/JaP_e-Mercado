@@ -2,11 +2,17 @@ let productsInCart = []
 let cantidad = []
 let unitsCost = []
 let actualCurrency = "USD"
+let totalToPay = ""
+
 
 //Funcion que muestra los productos que agregó el usuario al carrito para comprar
 function showProductsInCart(array) {
 
     let productsToBuy = ""
+
+    //vacia los array para que se definan las cantidades y costos correspondientes con el mismo index
+    cantidad = []
+    unitsCost = []
 
     for (let i = 0; i < array.articles.length; i++) {
         const product = array.articles[i];
@@ -35,16 +41,13 @@ function showProductsInCart(array) {
                                     <h2 class="d-none d-md-block" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: bold;">`+ product.name + `</h2>
                                     <h4 class="d-block d-md-none" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: bold;">`+ product.name + `</h4>
                                     <h6 class="text-secondary">$ `+ product.unitCost + ` ` + product.currency + `</h6>
+                                    <button class="btn btn-sm" style="color: blue;" onclick="removeProduct(`+ i + `)">Eliminar</button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-3 container align-self-center d-none d-md-block">
-                            <h2 class="text-center lead">Costo:</h2>
-                            <h2 class="text-center">$ <span id="costPerQuantity`+ i + `">` + cantidad[i] * unitsCost[i] + `</span> ` + product.currency + `</h2>
-                        </div>
-                        <div class="col-3 container align-self-center d-block d-md-none">
-                            <h6 class="text-center lead">Costo:</h6>
-                            <h5 class="text-center font-weight-bold">$ <span id="costPerQuantity`+ i + `">` + cantidad[i] * unitsCost[i] + `</span> ` + product.currency + `</h5>
+                        <div class="col-3 container align-self-center p-0">
+                            <h2 class="text-center lead title-responsive">Costo:</h2>
+                            <h2 class="text-center font-responsive">$ <span id="costPerQuantity`+ i + `">` + cantidad[i] * unitsCost[i] + `</span> ` + product.currency + `</h2>
                         </div>
                     </div>
                 </div>    
@@ -78,7 +81,7 @@ function showCartControls() {
         <div class="row">
             <div class="col-12 px-5">
                 <h3 class="text-center text-primary font-italic font-weight-light">Envio:</h3>
-                <label>Dirección:</label>
+                <label>Dirección (calle, número, esquina):</label>
                 <input type="text" id="address" class="form-control form-control-sm">
                 <p id="invalid1" class="d-none m-0 " style="color: red; font-size: 12px;">* Debe completar todos los campos</p>
                 <label class="pt-2">País:</label>
@@ -97,26 +100,21 @@ function showCartControls() {
         </div>
         <div class="row">
             <div class="col-12 text-center pt-1">
-                <button id="buy" class="btn btn-lg btn-success mb-3" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" onclick="validation()">Comprar</button>
-                <div class="collapse mb-3 text-left mx-auto" id="collapsecomprar">
-                    <div class="card card-body" style="color: black;">
-                        <form>
-                            <h4 class="pb-2">Ingrese sus datos:</h4>
-                            <label>Nombre:</label>
-                            <input id="data0" type="text" class="form-control form-control-sm" placeholder="Ingrese su nombre..."><br>
-                            <label>Nro. de Tarjeta:</label><br>
-                            <input id="data1" type="text" class="form-control form-control-sm d-inline" style="width: 120px;" maxlength="6">
-                            <p class="d-inline"> XX - XXXX - </p>
-                            <input id="data2" type="text" class="form-control form-control-sm d-inline" style="width: 90px;" maxlength="4"><br><br>
-                            <label>Exp:</label><br>
-                            <input id="data3" type="text" class="form-control form-control-sm d-inline" placeholder="mm" style="width: 70px;" maxlength="2">
-                            <p class="d-inline">/</p>
-                            <input id="data4" type="text" class="form-control form-control-sm d-inline" placeholder="aaaa" style="width: 90px;" maxlength="4"><br><br>
-                            <label>Email:</label>
-                            <input id="data5" type="text" class="form-control form-control-sm" placeholder="Ingrese su email..."><br>
-                            <h3 class="lead pb-2">TOTAL: <span id="totalToPay" class="text-success" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;"></span></h3>
-                            <button class="btn btn-primary" onclick="sendUserData()">Enviar</button>
-                        </form>
+                <button id="buy" type="button" class="btn btn-lg btn-success mb-3" data-target="#PaymentType" onclick="validation()">Comprar</button>
+                <div class="d-none fade" id="PaymentType" tabindex="-1" aria-labelledby="PaymentTypeLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="PaymentTypeLabel" style="color: black;">Seleccionar forma de pago</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="selectPaymentType(3)">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div id="modal-body" class="modal-body">
+                                <button class="btn mr-2" style="color: blue;" onclick="selectPaymentType(1)">Transferencia bancaria</button>
+                                <button class="btn ml-2" style="color: blue;" onclick="selectPaymentType(2)">Tarjeta de credito</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -137,19 +135,19 @@ function getCartTotal(array, criterio) {
         const product = array.articles[i];
 
         if (product.currency == "USD") {
-            subtotalUSD += (cantidad[i])*(unitsCost[i])
-            subtotalUYU += (cantidad[i])*(unitsCost[i]*40)
+            subtotalUSD += (cantidad[i]) * (unitsCost[i])
+            subtotalUYU += (cantidad[i]) * (unitsCost[i] * 40)
         }
         if (product.currency == "UYU") {
-            subtotalUSD += (cantidad[i])*((unitsCost[i])/40)
-            subtotalUYU += (cantidad[i])*(unitsCost[i])
+            subtotalUSD += (cantidad[i]) * ((unitsCost[i]) / 40)
+            subtotalUYU += (cantidad[i]) * (unitsCost[i])
         }
     }
 
-    if(criterio == 1){
+    if (criterio == 1) {
         return subtotalUSD
     }
-    if (criterio == 2){
+    if (criterio == 2) {
         return subtotalUYU
     }
 }
@@ -163,10 +161,10 @@ function increase(index) {
 
     document.getElementById('costPerQuantity' + index).innerHTML = (cantidad[index]) * (unitsCost[index])
 
-    if(actualCurrency == "USD"){
+    if (actualCurrency == "USD") {
         document.getElementById("subtotalCost").innerHTML = getCartTotal(productsInCart, 1)
     }
-    if(actualCurrency == "UYU"){
+    if (actualCurrency == "UYU") {
         document.getElementById("subtotalCost").innerHTML = getCartTotal(productsInCart, 2)
     }
 
@@ -186,10 +184,10 @@ function decrease(index) {
 
     document.getElementById('costPerQuantity' + index).innerHTML = (cantidad[index]) * (unitsCost[index])
 
-    if(actualCurrency == "USD"){
+    if (actualCurrency == "USD") {
         document.getElementById("subtotalCost").innerHTML = getCartTotal(productsInCart, 1)
     }
-    if(actualCurrency == "UYU"){
+    if (actualCurrency == "UYU") {
         document.getElementById("subtotalCost").innerHTML = getCartTotal(productsInCart, 2)
     }
 
@@ -219,57 +217,58 @@ function changeCurrency(criterio) {
 
 
 
-//Esta funcion calcula el costo de envio dependiendo del total del carrito, ademas muestra el costo total
+//Esta funcion calcula el costo de envio dependiendo del total del carrito, ademas muestra el costo total en el modal
 //y se ejecuta cuando se selecciona un tipo de envio.
 function getSendingCost() {
 
     let sendingCostUSD = 0
     let sendingCostUYU = 0
+    totalToPay = ""
 
 
-    if(document.getElementById("premium").selected) {
+    if (document.getElementById("premium").selected) {
 
-        if(actualCurrency == "USD"){
-            sendingCostUSD = (getCartTotal(productsInCart, 1))*(0.15)
-            document.getElementById("sendingCost").innerHTML = `$ `+ sendingCostUSD +` USD`
-            //Esta funcion tambien calcula el precio total pero este va a ser mostrado cuando se accione el collapse
-            document.getElementById("totalToPay").innerHTML = `$ `+ (getCartTotal(productsInCart, 1)+sendingCostUSD) +` USD`
+        if (actualCurrency == "USD") {
+            sendingCostUSD = (getCartTotal(productsInCart, 1)) * (0.15)
+            document.getElementById("sendingCost").innerHTML = `$ ` + sendingCostUSD + ` USD`
+            //Esta funcion tambien calcula el precio total pero este va a ser mostrado cuando se accione el modal
+            totalToPay = `$ ` + (getCartTotal(productsInCart, 1) + sendingCostUSD) + ` USD`
         }
 
-        if(actualCurrency == "UYU"){
-            sendingCostUYU = (getCartTotal(productsInCart, 2))*(0.15)
-            document.getElementById("sendingCost").innerHTML = `$ `+ sendingCostUYU +` UYU`
-            document.getElementById("totalToPay").innerHTML = `$ `+ (getCartTotal(productsInCart, 2)+sendingCostUYU) +` UYU`
-        }
-    }
-
-    if(document.getElementById("express").selected) {
-
-        if(actualCurrency == "USD"){
-            sendingCostUSD = (getCartTotal(productsInCart, 1))*(0.07)
-            document.getElementById("sendingCost").innerHTML = `$ `+ sendingCostUSD +` USD`
-            document.getElementById("totalToPay").innerHTML = `$ `+ (getCartTotal(productsInCart, 1)+sendingCostUSD) +` USD`
-        }
-
-        if(actualCurrency == "UYU"){
-            sendingCostUYU = (getCartTotal(productsInCart, 2))*(0.07)
-            document.getElementById("sendingCost").innerHTML = `$ `+ sendingCostUYU +` UYU`
-            document.getElementById("totalToPay").innerHTML = `$ `+ (getCartTotal(productsInCart, 2)+sendingCostUYU) +` UYU`
+        if (actualCurrency == "UYU") {
+            sendingCostUYU = (getCartTotal(productsInCart, 2)) * (0.15)
+            document.getElementById("sendingCost").innerHTML = `$ ` + sendingCostUYU + ` UYU`
+            totalToPay = `$ ` + (getCartTotal(productsInCart, 2) + sendingCostUYU) + ` UYU`
         }
     }
 
-    if(document.getElementById("standard").selected) {
+    if (document.getElementById("express").selected) {
 
-        if(actualCurrency == "USD"){
-            sendingCostUSD = (getCartTotal(productsInCart, 1))*(0.05)
-            document.getElementById("sendingCost").innerHTML = `$ `+ sendingCostUSD +` USD`
-            document.getElementById("totalToPay").innerHTML = `$ `+ (getCartTotal(productsInCart, 1)+sendingCostUSD) +` USD`
+        if (actualCurrency == "USD") {
+            sendingCostUSD = (getCartTotal(productsInCart, 1)) * (0.07)
+            document.getElementById("sendingCost").innerHTML = `$ ` + sendingCostUSD + ` USD`
+            totalToPay = `$ ` + (getCartTotal(productsInCart, 1) + sendingCostUSD) + ` USD`
         }
 
-        if(actualCurrency == "UYU"){
-            sendingCostUYU = (getCartTotal(productsInCart, 2))*(0.05)
-            document.getElementById("sendingCost").innerHTML = `$ `+ sendingCostUYU +` UYU`
-            document.getElementById("totalToPay").innerHTML = `$ `+ (getCartTotal(productsInCart, 2)+sendingCostUYU) +` UYU`
+        if (actualCurrency == "UYU") {
+            sendingCostUYU = (getCartTotal(productsInCart, 2)) * (0.07)
+            document.getElementById("sendingCost").innerHTML = `$ ` + sendingCostUYU + ` UYU`
+            totalToPay = `$ ` + (getCartTotal(productsInCart, 2) + sendingCostUYU) + ` UYU`
+        }
+    }
+
+    if (document.getElementById("standard").selected) {
+
+        if (actualCurrency == "USD") {
+            sendingCostUSD = (getCartTotal(productsInCart, 1)) * (0.05)
+            document.getElementById("sendingCost").innerHTML = `$ ` + sendingCostUSD + ` USD`
+            totalToPay = `$ ` + (getCartTotal(productsInCart, 1) + sendingCostUSD) + ` USD`
+        }
+
+        if (actualCurrency == "UYU") {
+            sendingCostUYU = (getCartTotal(productsInCart, 2)) * (0.05)
+            document.getElementById("sendingCost").innerHTML = `$ ` + sendingCostUYU + ` UYU`
+            totalToPay = `$ ` + (getCartTotal(productsInCart, 2) + sendingCostUYU) + ` UYU`
         }
     }
 }
@@ -280,59 +279,196 @@ function validation() {
 
     let allcompleted = true
 
-    if(document.getElementById('address').value === ""){
+    if (document.getElementById('address').value === "") {
 
         document.getElementById('invalid1').classList.remove('d-none')
-        allcompleted= false
+        allcompleted = false
 
     } else {
         document.getElementById('invalid1').classList.add('d-none')
     }
 
-    if(document.getElementById('country').value === ""){
+    if (document.getElementById('country').value === "") {
 
         document.getElementById('invalid2').classList.remove('d-none')
-        allcompleted= false
+        allcompleted = false
 
     } else {
         document.getElementById('invalid2').classList.add('d-none')
     }
 
-    if(document.getElementById('selectnone').selected){
+    if (document.getElementById('selectnone').selected) {
 
         document.getElementById('invalid3').classList.remove('d-none')
-        allcompleted= false
+        allcompleted = false
 
     } else {
         document.getElementById('invalid3').classList.add('d-none')
     }
 
-    //Si todos los campos estan completos le cambia el id al boton collapse
-    //para que este funcione, asi asegura que se completen los campos del envio
+    //Si todos los campos estan completos agrega el atributo data-toggle al boton del modal para que este se pueda accionar,
+    //ademas se agrega la clase modal y se quita el d-none al modal para que se vea. Asi, asegura que se completen los campos del envio
     //para luego pasar al proceso de compra
-    if(allcompleted) {
-        document.getElementById('collapsecomprar').id = 'collapseExample'
+    if (allcompleted) {
+        document.getElementById('buy').setAttribute("data-toggle", "modal")
+        document.getElementById('PaymentType').classList.add("modal")
+        document.getElementById('PaymentType').classList.remove("d-none")
     }
 }
 
-//Funcion para validar los datos del proceso de compra y
-//si todos los campos estan completos se realiza la compra con exito
-function sendUserData() {
-    for (let i = 0; i < 6; i++) {
 
-        if(document.getElementById("data"+ i).value === "") {
-            document.getElementById("data"+ i).classList.add('is-invalid')
-        } else {
-            document.getElementById("data"+ i).classList.remove('is-invalid')
+//Funcion para seleccionar la forma de pago en el modal
+function selectPaymentType(criterio) {
+
+    //Criterio = 1 significa que la forma de pago va a ser a través de tranferencia bancaria 
+    if (criterio === 1) {
+        document.getElementById("modal-body").innerHTML = `
+        <div class="card-header text-left p-0 mb-1">
+            <button class="btn btn-sm" style="color: blue; width: 5em;" onclick="selectPaymentType(3)">Volver</button>
+        </div>
+        <div class="card card-body m-0 shadow" style="color: black;">
+            <form>
+                <h4 class="pb-4">Ingrese sus datos:</h4>
+                <div class="row m-3">
+                    <label class="mr-3">Nombre:</label>
+                    <input id="datab-1" type="text" class="form-control form-control-sm w-50" placeholder="Ingrese su nombre..."><br>
+                </div>
+                <div class="row m-3">
+                    <label class="mr-3">Numero de Cuenta:</label>
+                    <input id="datab-2" type="number" class="form-control form-control-sm w-50"><br>
+                </div>
+            </form>
+            <h3 class="lead pb-2">TOTAL: <span class="text-success" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">${totalToPay}</span></h3>
+            <button class="btn btn-primary" id="closemodalb" onclick="sendUserData(1)">Enviar</button>
+        </div>
+        `
+    }
+
+    //Criterio = 2 significa que la forma de pago va a ser a través de tarjeta de credito 
+    if (criterio === 2) {
+        document.getElementById("modal-body").innerHTML = `
+        <div class="card-header text-left p-0 mb-1">
+            <button class="btn btn-sm" style="color: blue; width: 5em;" onclick="selectPaymentType(3)">Volver</button>
+        </div>
+        <div class="card card-body m-0 shadow" style="color: black;">
+            <form>
+                <h4 class="pb-2">Ingrese sus datos:</h4>
+                <label>Nombre:</label>
+                <input id="data0" type="text" class="form-control form-control-sm" placeholder="Ingrese su nombre..."><br>
+                <label>Nro. de Tarjeta:</label>
+                <input id="data1" type="text" class="form-control form-control-sm d-inline" style="width: 120px;" maxlength="6">
+                <p class="d-inline"> XX - XXXX - </p>
+                <input id="data2" type="text" class="form-control form-control-sm d-inline" style="width: 90px;" maxlength="4"><br><br>
+                <label>Exp:</label>
+                <input id="data3" type="text" class="form-control form-control-sm d-inline" placeholder="mm" style="width: 70px;" maxlength="2">
+                <p class="d-inline">/</p>
+                <input id="data4" type="text" class="form-control form-control-sm d-inline" placeholder="aaaa" style="width: 90px;" maxlength="4"><br><br>
+                <label>Email:</label>
+                <input id="data5" type="text" class="form-control form-control-sm" placeholder="Ingrese su email..."><br>
+                <h3 class="lead pb-2">TOTAL: <span class="text-success" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">${totalToPay}</span></h3>
+            </form>
+            <button class="btn btn-primary" id="closemodalc" onclick="sendUserData(2)">Enviar</button>
+        </div>
+        `
+    }
+
+    //Criterio = 3 significa que vuelve a las opciones de forma de pago
+    if (criterio === 3) {
+        document.getElementById("modal-body").innerHTML = `
+            <button class="btn mr-2" style="color: blue;" onclick="selectPaymentType(1)">Transferencia bancaria</button>
+            <button class="btn ml-2" style="color: blue;" onclick="selectPaymentType(2)">Tarjeta de credito</button>
+        `
+    }
+
+
+}
+
+
+//Funcion para validar los datos del proceso de compra (con transferencia bancaria o tarjeta de credito)
+//y si todos los campos estan completos se realiza la compra con exito
+function sendUserData(criterio) {
+    let bankdata = true
+    let carddata = true
+
+    //Criterio = 1 es para validar los campos de la tranferencia bancaria 
+    if (criterio === 1) {
+
+        for (let i = 1; i <= 2; i++) {
+
+            if (document.getElementById("datab-" + i).value === "") {
+                document.getElementById("datab-" + i).classList.add('is-invalid')
+                bankdata = false
+            } else {
+                document.getElementById("datab-" + i).classList.remove('is-invalid')
+            }
         }
 
+        if(bankdata === true) {
+            document.getElementById('closemodalb').setAttribute("data-dismiss", "modal")
 
-        if(document.getElementById("data"+ i).value != "") {
+            document.getElementById('cart').innerHTML = `
+            <div class="alert-success p-5">
+                <h4 class="alert-heading">Compra realizada con éxito!</h4>
+                <p>Los productos que usted compró los recibirá en la direccion que proporcionó en los siguientes dias. Le informaremos por sus medios de contacto acerca del estado del paquete. Ante cualquier inconveniente puede contactarnos!</p>
+                <hr>
+                <p class="mb-0">Gracias por comprar en e-Mercado!</p>
+            </div> `;
 
-            document.getElementById("collapseExample").innerHTML = `
-            <div class="alert alert-success" role="alert">
-                Compra realizada con exito!
-            </div>`
+            showCartControls();
+
+            document.getElementById('subtotalCost').innerHTML = "0"
+        }
+    }
+
+    //Criterio = 2 es para validar los campos de la tarjeta de credito
+    if (criterio === 2) {
+
+        for (let i = 0; i < 6; i++) {
+
+            if (document.getElementById("data" + i).value === "") {
+                document.getElementById("data" + i).classList.add('is-invalid')
+                carddata = false
+            } else {
+                document.getElementById("data" + i).classList.remove('is-invalid')
+            }
+
+        }
+
+        if(carddata === true) {
+            document.getElementById('closemodalc').setAttribute("data-dismiss", "modal")
+
+            document.getElementById('cart').innerHTML = `
+            <div class="alert-success p-5">
+                <h4 class="alert-heading">Compra realizada con éxito!</h4>
+                <p>Los productos que usted compró los recibirá en la direccion que proporcionó en los siguientes dias. Le informaremos por sus medios de contacto acerca del estado del paquete. Ante cualquier inconveniente puede contactarnos.</p>
+                <hr>
+                <p class="mb-0">Gracias por comprar en e-Mercado!</p>
+            </div> `;
+
+            showCartControls();
+
+            document.getElementById('subtotalCost').innerHTML = "0"
+        }
+    }
+}
+
+//Funcion para eliminar algun producto que se encuentre en el carrito
+function removeProduct(index) {
+
+    if (productsInCart != []) {
+        //Saca el producto del array
+        productsInCart.articles.splice(index, 1)
+
+        //Se actualizan los productos del carrito y los precios
+        showProductsInCart(productsInCart);
+        getSendingCost();
+
+        if (actualCurrency == "USD") {
+            document.getElementById('subtotalCost').innerHTML = ``+ getCartTotal(productsInCart, 1) +``
+        }
+
+        if (actualCurrency == "UYU") {
+            document.getElementById('subtotalCost').innerHTML = ``+ getCartTotal(productsInCart, 2) +``
         }
     }
 }

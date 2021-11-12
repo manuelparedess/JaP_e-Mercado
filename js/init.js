@@ -43,14 +43,27 @@ var getJSONData = function (url) {
 
 function mostrarUsuario() {
 
+  let profileList = []
+
   if (sessionStorage.getItem("usuario")) {
     let usuario_json = sessionStorage.getItem("usuario")
 
     let usuario = JSON.parse(usuario_json)
 
-    document.getElementById("usuario").innerHTML += `<img src="img/usuario.png" class="img-user"><span id="user">`+ usuario +`</span>`
+    document.getElementById("usuario").innerHTML = `<img src="img/usuario.png" class="img-user"><span id="user">` + usuario + `</span>`
 
-  } 
+    if (localStorage.getItem("profiles")) {
+      profileList = JSON.parse(localStorage.getItem("profiles"))
+
+      for (let i = 0; i < profileList.length; i++) {
+        const profile = profileList[i];
+
+        if ((usuario === profile.usuario) || (usuario === profile.email)) {
+          document.getElementById("usuario").innerHTML = `<img src="`+ profile.image +`" class="img-user"><span id="user">` + profile.usuario + `</span>`
+        }
+      }
+    }
+  }
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de

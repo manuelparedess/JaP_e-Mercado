@@ -139,42 +139,6 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
-
-#product-image {
-  float: left;
-  height: 40%;
-  width: 40%;
-  border: 5px solid;
-}
-.products-name, .products-description, .products-cost {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  padding-left: 50%;
-}
-
-.products-image {
-  padding-left: 10%;
-  cursor: pointer;
-}
-.products-name:hover {
-  cursor: pointer;
-  color: #0087F7;
-}
-
-.products-soldcount {
-  padding-left: 87%;
-  font-size: 13px;
-  font-family: Arial, Helvetica, sans-serif;
-  color: grey;
-}
-
-.product {
-  padding-top: 1em;
-  padding-bottom: 1em;
-  border: lightgrey 2px solid;
-  border-radius: 20px;
-  display: inline-block;
-  margin-left: 35em;
-}
 #login {
   margin: 40em;
   border: 1px solid;
@@ -236,98 +200,6 @@ a.custom-card:hover {
   margin-right: 3px;
   margin-left: 1px;
   margin-bottom: 3px;
-}
-
-#filtrar {
-  border: #343a40 solid 1px;
-  border-radius: 10px;
-  background-color: #343a40;
-  color: white;
-}
-#filtrar:hover {
-  background-color: black;
-}
-#clear {
-  border: black solid 1px;
-  background-color: white;
-  border-radius: 10px;
-}
-
-#clear:hover {
-  border: red solid 1px;
-  color: red;
-}
-
-.label-costFilter, .label-selectOrder{
-  float: left;
-  margin-right: 10px;
-  padding-top: 3px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-.label-selectOrder{
-  position: absolute;
-}
-
-.cost-range {
-  padding-left: 52%;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-#costMin, #costMax {
-  width: 80px;
-  border:rgb(184, 184, 184) solid 1px; 
-  border-radius: 5px;
-}
-.arrow {
-  float: left;
-  font-size: 10px;
-  margin-top: 3px;
-  margin-left: 3px;
-  color: rgb(184, 184, 184);
-  font-weight: bold;
-}
-#order {
-  width: 150px;
-  height: 30px;
-  background-color: white;
-  border: rgb(184, 184, 184) solid 1px;
-  border-radius: 10px;
-  margin-left: 65%;
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 15px;
-  color: rgb(100, 100, 100);
-}
-#select-order:hover #order-options {
-  display: inline-block;
-}
-.order-products {
-  margin-left: 30%;
-  position: absolute;
-}
-#order-options {
-  margin-left: 65%;
-  display: none;
-}
-#cost-desc, #cost-asc, #relevance {
-  width: 150px;
-  height: 30px;
-  background-color: white;
-  border: #343a40ea solid 1px;
-  border-radius: 10px;
-  color: #343a40;
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 15px;
-}
-#cost-desc:hover, #cost-asc:hover, #relevance:hover {
-  color: rgba(255, 0, 0, 0.979);
-  background-color: rgb(235, 235, 235);
-  font-size: 16px;
-}
-#buscar {
-  margin-left: 40%;
-  width: 380px;
-  border: #0087F7 solid 2px;
-  border-radius: 10px;
 }
 #info-product {
   background-color:rgb(230, 230, 230);
@@ -504,3 +376,16 @@ a.custom-card:hover {
   margin-left: 5px;
 }
 
+.subtitle {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+@media (max-width: 767px) {
+  .font-responsive {
+      font-size: 20px;
+  }
+  .title-responsive{
+    font-size: 15px;
+  }
+}

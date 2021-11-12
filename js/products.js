@@ -4,6 +4,7 @@ let minCost
 let maxCost
 let buscar
 
+//Funcion para mostrar los productos 
 function cargarProductos(array) {
 
   let listado = ""
@@ -16,34 +17,32 @@ function cargarProductos(array) {
       ((buscar === undefined) || (producto.name.toLowerCase().includes(buscar)))) {
 
       listado += `
-        <div class="product">
-          <div class="products-image">
-            <img id="product-image" src="`+ producto.imgSrc + `" onclick="redireccion()">
-          </div>
-          <div class="products-name"> 
-            <h3 id="product-name" onclick="redireccion()">`+ producto.name + `</h3>
-          </div>
-          <div class="products-description">
-            <p id="product-description" style="font-style: oblique;">`+ producto.description + `</p>
-          </div>
-          <div class="products-cost">
-            <h4 id="product-cost"> $`+ producto.cost + ` ` + producto.currency + `</h4>
-          </div>
-          <div class="products-soldcount">
-            <p id="soldcount">Vendidos: ` + producto.soldCount + `</p>
+        <div class="col-md-4 justify-content-center">
+          <div class="card shadow border-secondary" onclick="redireccion()">
+            <img src="`+ producto.imgSrc +`" class="card-img-top">
+            <div class="card-body">
+              <h4 class="card-title"><b>`+ producto.name +`</b></h4>
+              <p class="card-text">`+ producto.description +`</p>
+              <div class="d-flex justify-content-end align-items-center">
+                <small class="text-muted">Vendidos: ` + producto.soldCount + `</small>
+              </div>
+            </div>
+            <div class="card-footer border-secondary">
+              Precio: <b class="text-success">$`+ producto.cost +` `+ producto.currency +`</b><span class="float-right text-secondary">&#10095;</span>
+            </div>
           </div>
         </div>
-        <br><br>
-        `
+      `
     }
     document.getElementById("products-list").innerHTML = listado
   }
 }
-
+//Funcion para ir a ver la informacion del producto
 function redireccion () {
   window.location = "product-info.html"
 }
 
+//Funcion para ordenar los productos
 function ordenarProductos(criterio, array) {
   let prodOrdenados = []
 
@@ -58,6 +57,8 @@ function ordenarProductos(criterio, array) {
         }
         return 0
       })
+
+    document.getElementById("order").innerHTML = `Menor precio`
   }
 
   if (criterio === 2) {
@@ -71,6 +72,8 @@ function ordenarProductos(criterio, array) {
         }
         return 0
       })
+
+    document.getElementById("order").innerHTML = `Mayor precio`
   }
 
   if (criterio === 3) {
@@ -84,23 +87,11 @@ function ordenarProductos(criterio, array) {
         }
         return 0
       })
+
+    document.getElementById("order").innerHTML = `Relevancia`
   }
 
-  return prodOrdenados
-}
-
-function showSelection() {
-  document.getElementById("cost-desc").addEventListener("click", function() {
-      document.getElementById("order").innerHTML = `<span class="arrow">&#11167</span>Menor precio`
-  })
-
-  document.getElementById("cost-asc").addEventListener("click", function() {
-      document.getElementById("order").innerHTML = `<span class="arrow">&#11167</span>Mayor precio`
-  })
-
-  document.getElementById("relevance").addEventListener("click", function() {
-      document.getElementById("order").innerHTML = `<span class="arrow">&#11167</span>Relevancia`
-  })
+  cargarProductos(prodOrdenados)
 }
 
 
@@ -146,33 +137,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
     maxCost = undefined;
 
     cargarProductos(productos);
-  })
-
-  document.getElementById("cost-desc").addEventListener("click", function () {
-
-    showSelection(),
-
-    productos = ordenarProductos(1, productos)
-
-    cargarProductos(productos)
-  })
-
-  document.getElementById("cost-asc").addEventListener("click", function () {
-
-    showSelection(),
-
-    productos = ordenarProductos(2, productos)
-
-    cargarProductos(productos)
-  })
-
-  document.getElementById("relevance").addEventListener("click", function () {
-
-    showSelection(),
-
-    productos = ordenarProductos(3, productos)
-
-    cargarProductos(productos)
   })
 
   document.getElementById("buscar").addEventListener("input", function() {
