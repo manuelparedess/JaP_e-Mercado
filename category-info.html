@@ -13,17 +13,28 @@
   <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: rgba(0, 0, 0, .1);
+    }
+  </style>
 </head>
 
 <body>
-  <nav class="site-header sticky-top py-1 bg-dark">
-    <div class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
-      <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-      <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-      <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <div class="dropdown" id="dropdown-user">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="usuario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <nav class="site-header sticky-top">
+    <div class="d-flex flex-md-row justify-content-between" style="background-color: #35497d; ">
+      <div class="d-flex flex-md-row">
+        <div class="d-none d-md-flex col-4 align-self-center px-5 py-1" style="background-color: #5d96cf; border-right: #4572ad solid 10px;">
+          <a class="navbar-brand"><img src="img/logo_navbar.png" height="30"></a>
+          <a class="navbar-brand" style="font-weight: bold; color: lightcyan;">e-Mercado</a>
+        </div>
+        <a class="mx-5 d-none d-md-inline-block align-self-center" href="index.html">Inicio</a>
+        <a class="mx-5 d-none d-md-inline-block align-self-center" href="categories.html">Categorías</a>
+        <a class="mx-5 d-none d-md-inline-block align-self-center" href="products.html">Productos</a>
+        <a class="mx-5 d-none d-md-inline-block align-self-center" href="sell.html">Vender</a>
+      </div>
+      <div class="dropdown d-none d-md-flex flex-column align-self-center">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="usuario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-right: 10vw;">
         </button>
         <div class="dropdown-menu" aria-labelledby="usuario">
           <a class="dropdown-item" href="cart.html">Ver mi carrito</a>
@@ -34,38 +45,40 @@
     </div>
   </nav>
   <main role="main">
-    <div class="container mt-5">
+    <div class="container mt-3">
       <div class="text-center p-4">
-        <h2>Descripción de la categoría</h2>
-        <p class="lead">Encontrarás aquí toda la información de la categoría seleccionada.</p>
-        <p class="small alert-warning py-3"><strong>Nota: </strong>por simplicidad, cualquiera sea la categoría
+        <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #35497d;">Descripción de la categoría</h1>
+        <p class="lead" style="color: #4572ad;">Encontrarás aquí toda la información de la categoría seleccionada.</p>
+        <p class="small alert-warning py-3 mt-5"><strong>Nota: </strong>por simplicidad, cualquiera sea la categoría
           seleccionada previamente, siempre se visualizará la presente: <strong>Autos</strong>.</p>
       </div>
-      <h3 id="categoryName"></h3>
-      <hr class="my-3">
-      <dl>
-        <dt>Descripción</dt>
-        <dd>
-          <p id="categoryDescription"></p>
-        </dd>
+      <div class="p-4 shadow" style="background-color: white;">
+        <h3 id="categoryName"></h3>
+        <hr class="my-3">
+        <dl>
+          <dt>Descripción</dt>
+          <dd>
+            <p id="categoryDescription"></p>
+          </dd>
 
-        <dt>Cantidad de productos en la categoría</dt>
-        <dd>
-          <p id="productCount"></p>
-        </dd>
+          <dt>Cantidad de productos en la categoría</dt>
+          <dd>
+            <p id="productCount"></p>
+          </dd>
 
-        <dt>Criterio para incluir productos en esta categoría</dt>
-        <dd>
-          <p id="productCriteria"></p>
-        </dd>
+          <dt>Criterio para incluir productos en esta categoría</dt>
+          <dd>
+            <p id="productCriteria"></p>
+          </dd>
 
-        <dt>Imágenes ilustrativas</dt>
-        <dd>
-          <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
-          </div>
-        </dd>
-      </dl>
-      <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Ver productos</a>
+          <dt>Imágenes ilustrativas</dt>
+          <dd>
+            <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
+            </div>
+          </dd>
+        </dl>
+        <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Ver productos</a>
+      </div>
     </div>
   </main>
   <footer class="text-muted">

@@ -45,8 +45,8 @@ function mostrarUsuario() {
 
   let profileList = []
 
-  if (sessionStorage.getItem("usuario")) {
-    let usuario_json = sessionStorage.getItem("usuario")
+  if (localStorage.getItem("usuario")) {
+    let usuario_json = localStorage.getItem("usuario")
 
     let usuario = JSON.parse(usuario_json)
 

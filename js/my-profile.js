@@ -1,4 +1,4 @@
-let user = JSON.parse(sessionStorage.getItem("usuario"))
+let user = JSON.parse(localStorage.getItem("usuario"))
 
 
 //Funcion para mostrar los datos del perfil si este se encuentra guardado
@@ -77,7 +77,7 @@ function changeProfileData() {
         <div class="row">
           <h2 class="subtitle">Datos de cuenta</h2>
         </div>
-        <div class="row mt-3 d-block p-4 border border-secondary rounded">
+        <div class="row bg-light mt-3 d-block p-4 border border-secondary rounded shadow">
           <label class="d-inline mr-2" for="form-usu">Usuario:</label>
           <input type="text" class="form-control d-inline" id="form-usu" value="${formUsu}" style="width: 15em;">
           <p id="invalid-usu" class="text-danger d-none">* Debe ingresar un usuario</p>
@@ -89,7 +89,7 @@ function changeProfileData() {
         <div class="row mt-5">
           <h2 class="subtitle">Datos personales</h2>
         </div>
-        <div class="row mt-3 d-block p-4 border border-secondary rounded">
+        <div class="row bg-light mt-3 d-block p-4 border border-secondary rounded shadow">
           <label class="d-inline mr-2" for="form-name">Nombre y apellido:</label>
           <input type="text" class="form-control d-inline" id="form-name" value="${formName}" placeholder="Escribe tu nombre y apellido..." style="width: 20em;">
           <br><br>
@@ -161,7 +161,7 @@ function saveProfileData() {
 
     //guardo el usuario para mostrarlo en la barra de navegacion
     //(la funcion con la que muestra el usuario y la foto de perfil en la barra de navegacion esta en init.js)
-    sessionStorage.setItem("usuario", JSON.stringify(profile.usuario))
+    localStorage.setItem("usuario", JSON.stringify(profile.usuario))
 
     //guardo el perfil en la lista de perfiles
     profileList.push(profile)

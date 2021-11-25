@@ -28,33 +28,44 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
     <link href="css/dropzone.css" rel="stylesheet">
+    <style>
+      body {
+        background-color: rgba(0,0,0,.1);
+      }
+    </style>
   </head>
   <body>
-    <nav class="site-header sticky-top py-1 bg-dark">
-        <div class="container d-flex flex-column flex-md-row justify-content-between">
-            <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
-            <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-            <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-            <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-            <div class="dropdown" id="dropdown-user">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="usuario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              </button>
-              <div class="dropdown-menu" aria-labelledby="usuario">
-                <a class="dropdown-item" href="cart.html">Ver mi carrito</a>
-                <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
-                <a class="dropdown-item" href="login.html">Cerrar sesion</a>
-              </div>
+      <nav class="site-header sticky-top">
+        <div class="d-flex flex-md-row justify-content-between" style="background-color: #35497d; ">
+          <div class="d-flex flex-md-row">
+            <div class="d-none d-md-flex col-4 align-self-center px-5 py-1" style="background-color: #5d96cf; border-right: #4572ad solid 10px;">
+              <a class="navbar-brand"><img src="img/logo_navbar.png" height="30"></a>
+              <a class="navbar-brand" style="font-weight: bold; color: lightcyan;">e-Mercado</a>
             </div>
+            <a class="mx-5 d-none d-md-inline-block align-self-center" href="index.html">Inicio</a>
+            <a class="mx-5 d-none d-md-inline-block align-self-center" href="categories.html">Categorías</a>
+            <a class="mx-5 d-none d-md-inline-block align-self-center" href="products.html">Productos</a>
+            <a class="mx-5 d-none d-md-inline-block align-self-center" href="sell.html">Vender</a>
+          </div>
+          <div class="dropdown d-none d-md-flex flex-column align-self-center">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="usuario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-right: 10vw;">
+            </button>
+            <div class="dropdown-menu" aria-labelledby="usuario">
+              <a class="dropdown-item" href="cart.html">Ver mi carrito</a>
+              <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
+              <a class="dropdown-item" href="login.html">Cerrar sesion</a>
+            </div>
+          </div>
         </div>
-    </nav>
+      </nav>
       <div class="container">
         <div class="text-center p-4">
-          <h2>Vender</h2>
-          <p class="lead">Ingresa los datos del artículo a vender.</p>
+          <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #35497d;">Vender</h1>
+          <p class="lead" style="color: #4572ad;">Ingresa los datos del articulo a vender.</p>
         </div>
         <div class="row justify-content-md-center">
           <div class="col-md-8 order-md-1">
-            <h4 class="mb-3">Información del producto</h4>
+            <h4 class="mb-3" style="color: #4572ad; font-weight: bold;">Información del producto</h4>
             <form class="needs-validation" id="sell-info">
               <div class="row">
                 <div class="col-md-6 mb-3">
@@ -127,7 +138,7 @@
                   </div>
                 </div>
               <hr class="mb-4">
-              <h5 class="mb-3">Tipo de publicación</h5>
+              <h5 class="mb-3" style="color: #4572ad; font-weight: bold;">Tipo de publicación</h5>
               <div class="d-block my-3">
                 <div class="custom-control custom-radio">
                   <input id="goldradio" name="publicationType" type="radio" class="custom-control-input" checked="" required="">
@@ -146,7 +157,7 @@
                 </div>
               </div>
               <hr class="mb-4">
-              <h4 class="mb-3">Costos</h4>
+              <h4 class="mb-3" style="color: #4572ad; font-weight: bold;">Costos</h4>
               <ul class="list-group mb-3">
                   <li class="list-group-item d-flex justify-content-between lh-condensed">
                     <div>

@@ -31,18 +31,28 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/dropzone.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: rgba(0, 0, 0, .1);
+    }
+  </style>
 </head>
 
 <body>
-  <nav class="site-header sticky-top py-1 bg-dark">
-    <div class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
-      <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-      <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-      <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <div class="dropdown d-none d-md-inline-block" id="dropdown-user">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="usuario" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
+  <nav class="site-header sticky-top">
+    <div class="d-flex flex-md-row justify-content-between" style="background-color: #35497d; ">
+      <div class="d-flex flex-md-row">
+        <div class="d-none d-md-flex col-4 align-self-center px-5 py-1" style="background-color: #5d96cf; border-right: #4572ad solid 10px;">
+          <a class="navbar-brand"><img src="img/logo_navbar.png" height="30"></a>
+          <a class="navbar-brand" style="font-weight: bold; color: lightcyan;">e-Mercado</a>
+        </div>
+        <a class="mx-5 d-none d-md-inline-block align-self-center" href="index.html">Inicio</a>
+        <a class="mx-5 d-none d-md-inline-block align-self-center" href="categories.html">Categorías</a>
+        <a class="mx-5 d-none d-md-inline-block align-self-center" href="products.html">Productos</a>
+        <a class="mx-5 d-none d-md-inline-block align-self-center" href="sell.html">Vender</a>
+      </div>
+      <div class="dropdown d-none d-md-flex flex-column align-self-center">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="usuario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-right: 10vw;">
         </button>
         <div class="dropdown-menu" aria-labelledby="usuario">
           <a class="dropdown-item" href="cart.html">Ver mi carrito</a>
@@ -55,100 +65,100 @@
 
   <div class="main">
     <div class="text-center p-4">
-      <h2>Mi Perfil</h2>
-      <p class="lead">Tus datos de tu perfil se guardan aquí.</p>
+      <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #35497d;">Mi Perfil</h1>
+      <p class="lead" style="color: #4572ad;">Los datos de tu perfil se guardan aquí.</p>
     </div>
     <div id="alldata" class="container">
       <div class="row d-block mb-3">
         <div class="col text-center">
           <img id="savedImg" src="img/usuario.png" style="width: 10rem;">
         </div>
-      <div class="row">
-        <h2 class="subtitle">Datos de cuenta</h2>
-      </div>
-      <div class="row mt-3 border border-secondary rounded">
-        <div class="col">
-          <div class="row border-bottom p-2">
-            <div class="col-md-4">
-              <p class="m-0" style="color: #7a7a7a;">Usuario</p>
+        <div class="row mt-3">
+          <h2 class="subtitle">Datos de cuenta</h2>
+        </div>
+        <div class="row mt-3 bg-light border border-secondary rounded shadow">
+          <div class="col">
+            <div class="row border-bottom p-2">
+              <div class="col-md-4">
+                <p class="m-0" style="color: #7a7a7a;">Usuario</p>
+              </div>
+              <div class="col-md-8">
+                <span id="usu"></span>
+              </div>
             </div>
-            <div class="col-md-8">
-              <span id="usu"></span>
-            </div>
-          </div>
-          <div class="row p-2">
-            <div class="col-md-4">
-              <p class="m-0" style="color: #7a7a7a;">Email</p>
-            </div>
-            <div class="col-md-8">
-              <span id="email"></span>
+            <div class="row p-2">
+              <div class="col-md-4">
+                <p class="m-0" style="color: #7a7a7a;">Email</p>
+              </div>
+              <div class="col-md-8">
+                <span id="email"></span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="row mt-5">
-        <h2 class="subtitle">Datos personales</h2>
-      </div>
-      <div class="row mt-3 border border-secondary rounded">
-        <div class="col">
-          <div class="row border-bottom p-2">
-            <div class="col-md-4">
-              <p class="m-0" style="color: #7a7a7a;">Nombre y apellido</p>
+        <div class="row mt-5">
+          <h2 class="subtitle">Datos personales</h2>
+        </div>
+        <div class="row mt-3 bg-light border border-secondary rounded shadow">
+          <div class="col">
+            <div class="row border-bottom p-2">
+              <div class="col-md-4">
+                <p class="m-0" style="color: #7a7a7a;">Nombre y apellido</p>
+              </div>
+              <div class="col-md-8">
+                <span id="name"></span>
+              </div>
             </div>
-            <div class="col-md-8">
-              <span id="name"></span>
+            <div class="row border-bottom p-2">
+              <div class="col-md-4">
+                <p class="m-0" style="color: #7a7a7a;">Edad</p>
+              </div>
+              <div class="col-md-8">
+                <span id="age"></span>
+              </div>
             </div>
-          </div>
-          <div class="row border-bottom p-2">
-            <div class="col-md-4">
-              <p class="m-0" style="color: #7a7a7a;">Edad</p>
-            </div>
-            <div class="col-md-8">
-              <span id="age"></span>
-            </div>
-          </div>
-          <div class="row p-2">
-            <div class="col-md-4">
-              <p class="m-0" style="color: #7a7a7a;">Telefono de contacto</p>
-            </div>
-            <div class="col-md-8">
-              <span id="number"></span>
+            <div class="row p-2">
+              <div class="col-md-4">
+                <p class="m-0" style="color: #7a7a7a;">Telefono de contacto</p>
+              </div>
+              <div class="col-md-8">
+                <span id="number"></span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="mt-5 float-right">
-        <button class="btn btn-primary" onclick="changeProfileData()">Modificar datos</button>
+        <div class="mt-5 float-right">
+          <button class="btn btn-primary" onclick="changeProfileData()">Modificar datos</button>
+        </div>
       </div>
     </div>
-  </div>
-  <br><br>
+    <br><br>
 
-  <footer class="mt-5 text-muted bg-light">
-    <div class="container">
-      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
-      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+    <footer class="mt-5 text-muted">
+      <div class="container">
+        <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
+        <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+      </div>
+    </footer>
+    <div class="alert fade alert-success" role="alert" id="alertResult">
+      <span id="resultSpan"></span>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
-  </footer>
-  <div class="alert fade alert-success" role="alert" id="alertResult">
-    <span id="resultSpan"></span>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+    <div id="spinner-wrapper">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
-  </div>
-  <script src="js/jquery-3.4.1.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/dropzone.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/my-profile.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/dropzone.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/my-profile.js"></script>
 </body>
 
 </html>

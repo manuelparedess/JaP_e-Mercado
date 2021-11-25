@@ -139,55 +139,22 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
-#login {
-  margin: 40em;
-  border: 1px solid;
-  background-color: white;
-  border-radius: 40px;
-  padding-bottom: 1em;
-}
 
-#login-image {
-  width: 85%;
-  height: 85% ;
-}
-
-#login-email, #login-password{
-  padding: 10px;
-  width: 20em;
-  font-size: 20px;
-  margin: 10px;
-}
-
-#login-submit {
-  width: 15em;
-  height: 3em;
-  color: white;
-  background-color: rgb(23, 82, 209);
-  font-size: 20px;
-  margin: 15px;
-  border: 3px solid blue;
-  border-radius: 10px;
-}
-
-.invalido {
-  color: red;
-}
 
 #usuario {
-  background-color: #343a40;
+  background-color: #35497d;
   font-style: italic;
   font-weight: bold;
   font-size: 1rem;
-  border: #343a40 solid 1px;
+  border: #4572ad solid 1px;
   border-radius: 10px;
 }
 #usuario:hover {
-  background-color: #49515a;
-  text-decoration: underline #0087F7;
+  background-color: #4572ad;
+  text-decoration: underline white;
 }
 #user {
-  color: #0087F7;
+  color: white;
   margin-left: 2px;
   margin-right: 10px;
 }
@@ -201,140 +168,10 @@ a.custom-card:hover {
   margin-left: 1px;
   margin-bottom: 3px;
 }
-#info-product {
-  background-color:rgb(230, 230, 230);
-  margin-left: 15%;
-  margin-top: 5%;
-  margin-right: 15%;
-  border: grey solid 1px;
-  border-radius: 20px;
-}
-.imain-info {
-  margin-left: 5%;
-  padding-top: 20px;
-  margin-right: 5%;
-}
-#iname {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size: 65px;
-  font-weight: bold;
-  margin-left: 40%;
-}
-#idescription {
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  color: #343a40;
-  background-color: white;
-  font-size: 25px;
-  font-style: italic;
-  border: rgb(230, 230, 230) groove 5px;
-  border-radius: 10px;
-  padding-left: 5%;
-  padding-right: 5%;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-#icategory {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-weight: bold;
-  font-size: 15px;
-}
-#cat {
-  color: #0087F7;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: normal;
-}
-#iprice {
-  font-size: 40px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  background-color: #343a40;
-  border: rgb(230, 230, 230) solid 3px;
-  border-radius: 50px;
-  padding-left: 65px;
-  margin-left: 40%;
-  margin-right: 20%;
-  color: white;
-}
-#buy-now, #add-to-cart {
-  width: 220px;
-  height: 55px;
-  margin-left: 1%;
-  font-size: 20px;
-  font-weight: bold;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-#m-i {
-  float: left;
-  width: 35%;
-  height: 35%;
-  margin-right: 5%;
-  margin-top: 2%;
-  border: black solid 5px;
-}
-#imgs, #comms, #add-comm, #relprod {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size: 30px;
-} 
-#comms, #add-comm, #comment-submit{
-  margin-left: 5%;
-  margin-top: 5%;
-}
-.comments {
-  margin-left: 5%;
-  margin-right: 15%;
-  margin-bottom: 2%;
-  padding-left: 30px;
-  padding-top: 10px;
-  background-color: white;
-  border: black solid 5px;
-  border-radius: 20px;
-}
-#cuser {
-  color: #0087F7;
-  font-weight: bold;
-  font-style: italic;
-  font-size: 17px;
-  padding-left: 5px;
-}
-#cdescription {
-  padding-top: 10px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size: 20px;
-}
-#cdate {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 15px;
-  font-weight: bold;
-}
-#cscore {
-  position: absolute;
-  padding-left: 15px;
-}
-#user_comment{
-  margin-left: 5%;
-  margin-right: 15%;
-  width: 53em;
-  height: 8em;
-  font-size: 20px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-} 
-.iimages {
-  width: 70%;
-  height: 70% ;
-  background-color: white;
-  border: rgb(230, 230, 230) groove 5px;
-  border-radius: 10px;
-  margin-bottom: 50px;
-  padding: 15px;
-}
-#comment-submit {
-  margin-top: auto;
-  margin-bottom: 5%;
-}
 #calification {
   position: relative;
   overflow: hidden;
   display: inline-block;
-  margin-left: 5%;
 }
 #calification input {
   position: absolute;
@@ -350,23 +187,16 @@ a.custom-card:hover {
 #calification input:checked ~ label {
   color:orange;
 }
-#value {
-  display: none;
-}
-#relatedProd{
-  margin-left: 15%;
-}
-#relprod, .card {
-  margin-left: 5%;
-  margin-top: 25px;
-}
+
 .card:hover {cursor: pointer;}
 
 .addedProduct {
   height: 15em;
 }
 #controls {
-  border: black solid 3px;
+  color: white; 
+  background-color: #35497d;
+  border: #4572ad solid 5px;
   border-radius: 20px;
 }
 #currency {
@@ -379,6 +209,7 @@ a.custom-card:hover {
 .subtitle {
   font-size: 25px;
   font-weight: bold;
+  color: #4572ad;
 }
 
 @media (max-width: 767px) {

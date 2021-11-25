@@ -22,7 +22,7 @@ function showProductsInCart(array) {
         cantidad.push(product.count)
 
         productsToBuy += `
-            <div class="row shadow">
+            <div class="row shadow bg-light">
                 <div class="col-12 border border-dark rounded">    
                     <div class="row p-3 p-md-5 addedProduct">
                         <div class="col-md-2 col-1 align-self-center">

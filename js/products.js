@@ -18,28 +18,20 @@ function cargarProductos(array) {
 
       listado += `
         <div class="col-md-4 justify-content-center">
-          <div class="card shadow border-secondary" onclick="redireccion()">
-            <img src="`+ producto.imgSrc +`" class="card-img-top">
-            <div class="card-body">
-              <h4 class="card-title"><b>`+ producto.name +`</b></h4>
+          <a href="product-info.html" class="card mb-4 shadow-sm custom-card shadow">
+            <img class="bd-placeholder-img card-img-top" src="`+ producto.imgSrc +`">
+            <h3 class="mx-3 mt-3 mb-0"><b>`+ producto.name +`</b></h3>
+            <small class="text-muted mx-3">Vendidos: ` + producto.soldCount + `</small>
+            <h5 class="mx-3 mt-2"><b class="text-success" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">$`+ producto.cost +` `+ producto.currency +`</b></h5>
+            <div class="card-body pt-0">
               <p class="card-text">`+ producto.description +`</p>
-              <div class="d-flex justify-content-end align-items-center">
-                <small class="text-muted">Vendidos: ` + producto.soldCount + `</small>
-              </div>
             </div>
-            <div class="card-footer border-secondary">
-              Precio: <b class="text-success">$`+ producto.cost +` `+ producto.currency +`</b><span class="float-right text-secondary">&#10095;</span>
-            </div>
-          </div>
+          </a>
         </div>
       `
     }
     document.getElementById("products-list").innerHTML = listado
   }
-}
-//Funcion para ir a ver la informacion del producto
-function redireccion () {
-  window.location = "product-info.html"
 }
 
 //Funcion para ordenar los productos

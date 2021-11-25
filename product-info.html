@@ -13,17 +13,30 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: rgba(0, 0, 0, .1);
+    }
+  </style>
 </head>
 
 <body>
-  <nav class="site-header sticky-top py-1 bg-dark">
-    <div class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
-      <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-      <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-      <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <div class="dropdown" id="dropdown-user">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="usuario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <nav class="site-header sticky-top">
+    <div class="d-flex flex-md-row justify-content-between" style="background-color: #35497d; ">
+      <div class="d-flex flex-md-row">
+        <div class="d-none d-md-flex col-4 align-self-center px-5 py-1"
+          style="background-color: #5d96cf; border-right: #4572ad solid 10px;">
+          <a class="navbar-brand"><img src="img/logo_navbar.png" height="30"></a>
+          <a class="navbar-brand" style="font-weight: bold; color: lightcyan;">e-Mercado</a>
+        </div>
+        <a class="mx-5 d-none d-md-inline-block align-self-center" href="index.html">Inicio</a>
+        <a class="mx-5 d-none d-md-inline-block align-self-center" href="categories.html">Categorías</a>
+        <a class="mx-5 d-none d-md-inline-block align-self-center" href="products.html">Productos</a>
+        <a class="mx-5 d-none d-md-inline-block align-self-center" href="sell.html">Vender</a>
+      </div>
+      <div class="dropdown d-none d-md-flex flex-column align-self-center">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="usuario" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false" style="margin-right: 10vw;">
         </button>
         <div class="dropdown-menu" aria-labelledby="usuario">
           <a class="dropdown-item" href="cart.html">Ver mi carrito</a>
@@ -34,11 +47,36 @@
     </div>
   </nav>
 
-  <div id="info-product">
-  </div>
+  <div class="main">
+    <div class="text-center p-4">
+      <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #35497d;">Información del producto</h1>
+      <p class="lead" style="color: #4572ad;">Podrás ver informacion detallada del producto.</p>
+    </div>
+    <div class="container mt-3">
+      <div class="row">
+        <div class="col-md-8 p-0 shadow mb-4 mb-md-0" id="product-images">
 
-  <div class="container-sm" id="relatedProd">
-  </div><br><br><hr>
+        </div>
+        <div class="col-md-4" id="product-info">
+
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-md-8 py-4 bg-light shadow mb-4 mb-md-0">
+          <div class="row px-5" id="product-description">
+
+          </div> <hr>
+          <div class="row mt-4 px-5 d-block" id="product-comments">
+
+          </div>
+        </div>
+        <div class="col-md-4" id="related-products">
+
+        </div>
+      </div>
+    </div>
+    
+  </div>
 
   <footer class="text-muted">
     <div class="container">
